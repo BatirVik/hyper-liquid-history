@@ -13,7 +13,7 @@ pip install -r requirements.txt
 
 2. Run the script:
 ```
-python script.py
+python main.py
 ```
 
 3. When prompted, enter the wallet address.
