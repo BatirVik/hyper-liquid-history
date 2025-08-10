@@ -3,7 +3,7 @@ from typing import Iterable
 
 import httpx
 
-from src.hyper_liquid import HyperLiquid
+from src.hyper_liquid import HyperLiquid, InvalidUserAddress
 from src.trades import Trade, get_completed_perpetual_trades
 
 
@@ -13,7 +13,14 @@ async def main():
     print("Fetching trade history ...\n")
     async with httpx.AsyncClient() as client:
         hyper_liquid = HyperLiquid(client)
-        fills = await hyper_liquid.get_user_fills(user)
+        try:
+            fills = await hyper_liquid.get_user_fills(user)
+        except InvalidUserAddress:
+            print(f"Invalid user address: {user}")
+            print(
+                "Example of valid user address: 0x63cdc4b2e50a4e51451c5ca6e494c0e96e8f2d37"
+            )
+            return
 
     trades = get_completed_perpetual_trades(fills)
     display_trades(trades)

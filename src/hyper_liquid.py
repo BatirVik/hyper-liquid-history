@@ -8,6 +8,10 @@ import httpx
 from src.utils import TimestampMsWindow, split_time_window
 
 
+class InvalidUserAddress(Exception):
+    pass
+
+
 class HyperLiquid:
     def __init__(self, client: httpx.AsyncClient):
         self._client = client
@@ -48,6 +52,9 @@ class HyperLiquid:
                 "endTime": time_window[1],
             },
         )
+        if resp.status_code == 422:
+            raise InvalidUserAddress(user)
+
         resp.raise_for_status()
         fills = resp.json()
         if len(fills) == 2000:
