@@ -1,0 +1,36 @@
+Technical Test – Extraction of Completed Perpetual Trades on HyperLiquid
+
+Objective
+Reconstruct the history of completed perpetual trades (positions opened and then closed) for a HyperLiquid user, based on the data available via the public API.
+
+Instructions
+Develop a Python script executable from the command line that:
+- Asks the user to enter a wallet address
+- Retrieves and rebuilds the list of their completed perpetual trades
+- Displays for each trade:
+  - The coin (e.g., ETH, BTC)
+  - The direction (long / short)
+  - The opening time of the position
+  - The duration the position remained open
+  - The realized PnL (in USD)
+
+The script must be:
+- Easy to run (python script.py)
+- Robust (handle empty cases, request errors, etc.)
+- Documented
+
+Files to submit
+- script.py: main script
+- requirements.txt: required libraries
+
+References
+Use the HyperLiquid API available at: https://hyperliquid.gitbook.io/hyperliquid-docs/for-developers/api/info-endpoint
+
+Hints
+2 hints are sent by message with the ZIP file of the test (to be used only if the candidate is stuck).
+
+Elimination criteria
+The following situations will result in automatic disqualification:
+- Off-topic submission
+- Script not executable or with blocking errors
+- Missing required files (script.py or requirements.txt)
